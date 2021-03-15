@@ -29,7 +29,7 @@ namespace Twitterbot
                 if (menuselection == 1)
                 {
                     Console.WriteLine($"<{DateTime.Now}> - Bot Started");
-                    
+
                     //add dictionary or list to the sendtweet variable
 
                     SendTweet("tweet1");
@@ -43,12 +43,18 @@ namespace Twitterbot
                 {
                     break;
                 }
+                //make it so if anything else comes back as a non valid input
                 else
                 {
                     Console.WriteLine("Thats not a valid input");
                 }
                 //Figure out how to make this wait until after tweet is sent or not sent
-                Console.WriteLine("Would you like to send another tweet?");
+                Console.WriteLine("Would you like to send another tweet? [Y/N]");
+                var endmenu = Console.ReadLine();
+                if (endmenu != "Y")
+                {
+                    break;
+                }
             }
         }
 
