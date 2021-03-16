@@ -7,7 +7,7 @@ namespace Twitterbot
     //foreach key value pair
     public class DictionaryTweet
     {
-        static void List(string[] args)
+        public static void Mylist(string[] args)
         {
             List<string> TweetOptions = new List<string>();
             TweetOptions.Add("Twitter is cool.");
