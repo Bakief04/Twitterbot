@@ -20,40 +20,51 @@ namespace Twitterbot
 
         static void Main(string[] args)
         {
+            //instantiate into class
+            //create object from class
             //Master Loop
-            while (true)
+            bool menu = true;
+
+            while (menu)
             {
                 //menu for tweetbot
                 Console.WriteLine("Welcome to the twitterbot. \n Please make a selection \n 1.Send Tweet \n 2. Send Random Tweet \n 3. Quit");
-                var menuselection = Convert.ToInt32(Console.ReadLine());
-                if (menuselection == 1)
+                //tryparse
+                string menuselection = Console.ReadLine();
+
+                int num = 0;
+                bool success = Int32.TryParse(menuselection, out num);
+
+                if (num == 1)
                 {
                     Console.WriteLine($"<{DateTime.Now}> - Bot Started");
 
-                    //add dictionary or list to the sendtweet variable
+                    //add dictionary or list to the sendtweet variable foreach
 
                     SendTweet("tweet1");
+                    //Figure out how to make this wait until after tweet is sent or not sent
+                    //wait
+                    Console.WriteLine("Would you like to send another tweet? [Y/N]");
                 }
                 //fix by adding a random selection from list
-                if (menuselection == 2)
+                if (num == 2)
                 {
                     Console.WriteLine("Currently under construction");
                 }
-                if (menuselection == 3)
+                if (num == 3)
                 {
                     break;
                 }
                 //make it so if anything else comes back as a non valid input
+                string endmenu = Console.ReadLine();
+                endmenu = endmenu.ToUpper();
+                if (endmenu == "N")
+                {
+                    break;
+                }
                 else
                 {
                     Console.WriteLine("Thats not a valid input");
-                }
-                //Figure out how to make this wait until after tweet is sent or not sent
-                Console.WriteLine("Would you like to send another tweet? [Y/N]");
-                var endmenu = Console.ReadLine();
-                if (endmenu != "Y")
-                {
-                    break;
                 }
             }
         }

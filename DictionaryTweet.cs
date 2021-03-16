@@ -4,13 +4,16 @@ using System.Text;
 
 namespace Twitterbot
 {
-    static class DictionaryTweet
+    //foreach key value pair
+    public class DictionaryTweet
     {
-        public static Dictionary<int, string> TweetList = new Dictionary<int, string>
+        static void List(string[] args)
         {
-            {1, "hello world" },
-            {2, "twitter is cool" },
-            {3, "this is for testing purposes" }
-        };
+            List<string> TweetOptions = new List<string>();
+            TweetOptions.Add("Twitter is cool.");
+            TweetOptions.Add("This is a test.");
+            TweetOptions.Add("Hello World!");
+            TweetOptions.Add("This is a Twitter Bot.");
+        }
     }
 }
