@@ -34,14 +34,42 @@ namespace Twitterbot
 
                 int num = 0;
                 bool success = Int32.TryParse(menuselection, out num);
+                List<string> TweetOptions = new List<string>();
+                TweetOptions.Add("Twitter is cool.");
+                TweetOptions.Add("This is a test.");
+                TweetOptions.Add("Hello World!");
+                TweetOptions.Add("This is a Twitter Bot.");
 
                 if (num == 1)
                 {
                     Console.WriteLine($"<{DateTime.Now}> - Bot Started");
 
                     //add dictionary or list to the sendtweet variable foreach
-
-                    SendTweet("tweet1");
+                    var tweetOptionsCount = 1;
+                    foreach (var TweetOption in TweetOptions)
+                    {
+                        Console.WriteLine($"{tweetOptionsCount++} {TweetOption}");
+                    }
+                    string tweetChoice = Console.ReadLine();
+                    int selection;
+                    Int32.TryParse(tweetChoice, out selection);
+                    if (selection == 1)
+                        {
+                        SendTweet(TweetOptions[0]);
+                        }
+                    if (selection == 2)
+                        {
+                        SendTweet(TweetOptions[1]);
+                        }
+                    if (selection == 3)
+                        {
+                        SendTweet(TweetOptions[2]);
+                        }
+                    if (selection == 4)
+                        {
+                        SendTweet(TweetOptions[3]);
+                        }
+                    //SendTweet(tweetChoice);
                     //Figure out how to make this wait until after tweet is sent or not sent
                     //wait
                     Console.WriteLine("Would you like to send another tweet? [Y/N]");
@@ -58,6 +86,10 @@ namespace Twitterbot
                 //make it so if anything else comes back as a non valid input
                 string endmenu = Console.ReadLine();
                 endmenu = endmenu.ToUpper();
+                if (endmenu == "Y")
+                {
+                    continue;
+                }
                 if (endmenu == "N")
                 {
                     break;

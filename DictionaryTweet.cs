@@ -17,3 +17,8 @@ namespace Twitterbot
         }
     }
 }
+//var tweetOptionsCount = 1;
+//foreach (var TweetOption in TweetOptions)
+//{
+//    Console.WriteLine($"{tweetOptionsCount++ } { TweetOption}");
+//}
