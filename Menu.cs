@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TweetSharp;
 using System.Text;
+using System.Threading;
 
 namespace Twitterbot
 {
@@ -9,6 +10,7 @@ namespace Twitterbot
     {
         public void Menu1()
         {
+            var random = new Random();
             SendTweet sendTweet = new SendTweet();
             bool menu = true;
 
@@ -16,11 +18,11 @@ namespace Twitterbot
             {
                 //menu for tweetbot
                 Console.WriteLine("Welcome to the twitterbot. \n Please make a selection \n 1.Send Tweet \n 2. Send Random Tweet \n 3. Quit");
-                //tryparse
                 string menuselection = Console.ReadLine();
 
                 int num = 0;
                 bool success = Int32.TryParse(menuselection, out num);
+                //things you can tweet
                 List<string> TweetOptions = new List<string>();
                 TweetOptions.Add("Twitter is cool.");
                 TweetOptions.Add("This is a test.");
@@ -30,7 +32,6 @@ namespace Twitterbot
                 if (num == 1)
                 {
                     Console.WriteLine($"<{DateTime.Now}> - Bot Started");
-                    //add dictionary or list to the sendtweet variable foreach
                     var tweetOptionsCount = 1;
                     foreach (var TweetOption in TweetOptions)
                     {
@@ -55,21 +56,27 @@ namespace Twitterbot
                     {
                         sendTweet.TweetSend(TweetOptions[3]);
                     }
-                    //SendTweet(tweetChoice);
-                    //Figure out how to make this wait until after tweet is sent or not sent
-                    //wait using system.threading thread.sleep(5000) wait task
-                    Console.WriteLine("Would you like to send another tweet? [Y/N]");
+                    {
+                        Thread.Sleep(1000);
+                        Console.WriteLine("Would you like to send another tweet? [Y/N]");
+                    }
                 }
-                //fix by adding a random selection from list
+
                 if (num == 2)
                 {
-                    Console.WriteLine("Currently under construction");
+                    int index = random.Next(TweetOptions.Count);
+                    Console.WriteLine("The Tweet " + "(" + TweetOptions[index] + ")" + " has been selected");
+                    sendTweet.TweetSend(TweetOptions[index]);
+                    {
+                        Thread.Sleep(1000);
+                        Console.WriteLine("Would you like to send another tweet? [Y/N]");
+                    }
                 }
                 if (num == 3)
                 {
                     break;
                 }
-                //make it so if anything else comes back as a non valid input
+                //loop back prompt
                 string endmenu = Console.ReadLine();
                 endmenu = endmenu.ToUpper();
                 if (endmenu == "Y")
