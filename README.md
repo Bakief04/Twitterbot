@@ -4,6 +4,9 @@ For Api information message Brian Kiefer on slack.
 
 If you try to send the same tweet twice in a row from the bot it returns an error.
 
+Twitter is @DictionaryTwee2
+https://twitter.com/DictionaryTwee2
+
 >Uses an API
 >Returns value from a list
 >Uses a master loop
