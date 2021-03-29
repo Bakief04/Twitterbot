@@ -7,6 +7,8 @@ If you try to send the same tweet twice in a row from the bot it returns an erro
 Twitter is @DictionaryTwee2
 https://twitter.com/DictionaryTwee2
 
+Requirements:
+
 Uses an API
 
 Returns value from a list
